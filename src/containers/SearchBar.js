@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -20,36 +19,22 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <Form>
-        <Form.Group>
-          <Form.Input
-            width={6}
-            placeholder="Search for a city"
-            value={this.state.term}
-            onChange={this.onInputChange} // whenever you pass a callback function(onInputChange) and the callback function has a reference to 'this', you need to bind the context
-          />
-          <Button content="Submit" />
-        </Form.Group>
-      </Form>
+      <div className="ui main text container">
+        <form className="ui form basic segment" onSubmit={this.onFormSubmit}>
+            <div className="ui fluid action input">
+              <input
+                type="text"
+                placeholder="Search for a city..."
+                value={this.state.term}
+                onChange={this.onInputChange} // whenever you pass a callback function(onInputChange) and the callback function has a reference to 'this', you need to bind the context
+              />
+
+              <button className="ui button">Search</button>
+            </div>
+        </form>
+      </div>
     );
   }
 }
 
 export default SearchBar;
-
-// <form className="ui form" onSubmit={this.onFormSubmit}>
-//   <div className="fields">
-//     <div className="six wide field">
-//       <input
-//         type="text"
-//         placeholder="Search for a city..."
-//         value={this.state.term}
-//         onChange={this.onInputChange} // whenever you pass a callback function(onInputChange) and the callback function has a reference to 'this', you need to bind the context
-//       />
-//     </div>
-//       <input
-//         type="submit"
-//         className="ui inverted green button"
-//       />
-//   </div>
-// </form>
