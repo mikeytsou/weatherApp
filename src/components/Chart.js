@@ -4,7 +4,7 @@ import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-spark
 
 const Chart = (props) => {
   function average(data) {
-    return _.round(_.sum(data) / data.length);
+    return _.round(_.sum(data) / data.length); // calculate average
   }
 
   return (
