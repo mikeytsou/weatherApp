@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreator } from 'redux';
+import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
 
 class SearchBar extends Component {
@@ -19,6 +19,8 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     // fetch weather data here from api
+    this.props.fetchWeather(this.state.term);
+    this.setState({ term: '' }); // this clears the search bar and rerender the component
   }
 
   render() {
@@ -41,4 +43,9 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather }, dispatch);
+}
+
+// mapDispatchToProps always needs to be the second argument
+export default connect(null, mapDispatchToProps)(SearchBar);
