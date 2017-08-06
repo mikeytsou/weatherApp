@@ -10,6 +10,9 @@ class WeatherList extends Component {
         <thead>
           <tr>
             <th>City</th>
+            <th>Temperature</th>
+            <th>Pressure</th>
+            <th>Humidity</th>
           </tr>
         </thead>
 
@@ -21,5 +24,8 @@ class WeatherList extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { weather: state.weather };
+}
 
-export default WeatherList;
+export default connect(mapStateToProps)(WeatherList);
