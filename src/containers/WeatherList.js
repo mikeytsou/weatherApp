@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
-// import { bindActionCreators } from 'redux';
-// import { fetchWeather } from '../actions/index';
+import Chart from '../components/Chart';
 
 class WeatherList extends Component {
   // this function renders a single city(row)
@@ -16,11 +14,12 @@ class WeatherList extends Component {
     return (
       <tr key={name}>
         <td>{name}</td>
-        <td>
-          <Sparklines height={120} width={180} data={temperature}>
-            <SparklinesLine color="red" />
-          </Sparklines>
-        </td>
+
+        <td><Chart data={temperature} color="orange" /></td>
+
+        <td><Chart data={pressure} color="blue" /></td>
+
+        <td><Chart data={humidity} color="green" /></td>
       </tr>
     );
   }
@@ -30,10 +29,10 @@ class WeatherList extends Component {
       <table className="ui celled table">
         <thead>
           <tr>
-            <th>City</th>
-            <th>Temperature</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
+            <th className="four wide">City</th>
+            <th className="four wide">Temperature</th>
+            <th className="four wide">Pressure</th>
+            <th className="four wide">Humidity</th>
           </tr>
         </thead>
 
